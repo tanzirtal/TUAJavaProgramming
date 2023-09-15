@@ -1,0 +1,65 @@
+b.	Inheritance
+i.	One class becomes extension of another class, inheriting members of that class
+ii.	Two parties involved
+1.	Parent (superclass/parent class/base class)
+a.	Allows child class to reuse data within this class
+2.	Child (subclass/child class/derived class)
+a.	Inherits members of parents class
+b.	Should be a more specialized (specific) form of the parent class they are inheriting from
+iii.	Example below, Employee  Person defined as “IS A” relationship. Meaning, an employee IS A person; however, a Person IS NOT (necessarily) A person
+iv.	EX: 
+1.	Person.Java [parent class] contains the following fields: name, age, gender
+2.	Employee.Java [child class, inheriting from Person.Java]: needs name, age, gender (inherits all of those from Person.Java) but can define further items like 
+v.	When calling constructors from Parent class, super() needs to be called in the first line of the constructor in the child class; otherwise, if you put super() after anything else it will spit out an error. 
+1.	Something to note here, default constructor of the parent class will run unless abstracted/interfaced
+
+vi.	In summary of constructors:
+1.	Superclass constructors run first
+2.	User super() to call specific constructors
+a.	Explicit calls can be made to a specific superclass (parent) constructor
+3.	super() calls must be first
+a.	Explicit calls to superclass (parent) in child class must be first in constructor, or error will occur
+4.	Some constructor must be executed
+a.	If superclass (parent) does not have a default constructor, subclass must explicitly call another one
+5.	Here's why a constructor has to exist in a superclass:
+a.	State Initialization: The superclass might have instance variables or states that need initialization. Not calling the superclass's constructor might leave these in an undefined state, leading to unpredictable behavior or errors.
+b.	Invariants: The superclass might have invariants (conditions that must always be true). Its constructor could enforce these invariants, ensuring the object's integrity.
+c.	Resource Allocation: The superclass's constructor might be responsible for allocating certain resources, and not calling it would lead to potential issues.
+d.	If the superclass doesn't provide a no-argument constructor (because it has constructors with parameters and doesn't explicitly define a no-argument one), and the subclass constructor doesn't explicitly call one of the superclass's constructors using super(...), you'll get a compile-time error. This is Java's way of ensuring that the superclass's state and behavior are always initialized and invoked correctly.
+vii.	Overriding inherited methods
+1.	Square is a rectangle (rectangle IS NOT A square)
+a.	Square.Java (child) inherits from Rectangle.Java (parent)
+i.	One method inherited was perimeter calculation from Rectangle.Java, but the formula is different for Square from that of the Rectangle.
+ii.	Now, Square.Java needs to change that method to fit its needs. THIS IS CALLED OVERRIDING A METHOD.
+b.	Call method in child class, override by returning different value within that method (so it doesn’t call the default from the parent class)
+i.	@Override annotation when overriding in the child class
+viii.	Overloading inherited methods
+1.	Overloading methods is when you have two methods with exact same name, but different parameters
+2.	Can overload method from superclass(parent) in subclass (child)
+ix.	Limiting Access in Inheritance
+1.	Some things are not inherited from parent class  child class
+a.	Constructors are not inherited: technically are not members of a class (why? See below):
+i.	Name Restriction: A constructor must always have the same name as the class in which it resides. This is unlike methods, which can have any valid identifier as their name.
+ii.	No Return Type: Constructors do not have a return type, not even void. This is a clear distinction from methods.
+iii.	Unique Task: Constructors have a very specific job - to initialize a newly created object. They don't perform general tasks or calculations like methods can.
+iv.	Invocation Time: Constructors are called only once for an object, at the time of object creation using the new keyword. Regular methods can be called multiple times on the object.
+v.	No Inheritance: Constructors are not inherited by subclasses. Although a constructor from a superclass can be called from a subclass (using super), the constructors themselves don't get inherited in the way that other class members do.
+vi.	Distinct Modifier Behavior: The final, static, abstract, and synchronized modifiers cannot be used with constructors, but they can be used with methods.
+b.	Public and protected methods and fields are inherited from parent class  child class
+c.	Private methods and fields are NOT inherited from parent class  child class
+d.	Final methods are inherited but CANNOT BE OVERRIDDEN (since it is final, duh)
+
+
+
+
+
+
+2.	You cannot assign weaker access privileges to child class method than is parent class. 
+EX: 
+Parent class method: public myMethod()
+Child class method: protected myMethod()
+
+This will kick back an error because child class method has “weaker” access privilege than the parent class.
+x.	Chain of inheritance
+1.	Java provides an Object class, all other classes in Java inherits from Object class (even if not explicitly)
+a.	EX: Person (parent, inherits from [no one])  Woman (child, inherits from [Person])  Mother (grandchild, inherits from [Person, Woman])
