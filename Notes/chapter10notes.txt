@@ -1,0 +1,14 @@
+c.	Polymorphism
+i.	In OOP: a subclass can define their own unique behaviors but also takes behaviors from superclass.
+1.	EX: Animal dog = new Dog();
+a.	Object called dog, defined as type animal, but it is an instance of dog();
+b.	Dog inherits from Animal, so we can do this
+2.	Summary: 
+a.	Type vs. Instance
+i.	Object can have a superclass type, and a subclass instance
+b.	Access
+i.	Polymorphic objects can only access the methods of their type (not their instance). Casting is required in order to access the methods of their instance.
+c.	Overridden methods
+i.	If a method is overridden by the subclass, the polymorphic object will execute the overridden method at runtime
+d.	instanceOf operator
+i.	The instaceof operator is used to determine if an object is an instance of a certain class
