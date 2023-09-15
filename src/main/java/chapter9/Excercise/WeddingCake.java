@@ -1,7 +1,7 @@
 package chapter9.Excercise;
 
 public class WeddingCake extends Cake{
-    public int tiers;
+    private int tiers;
 
     public int getTiers() {
         return tiers;

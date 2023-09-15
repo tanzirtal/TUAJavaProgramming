@@ -2,7 +2,7 @@ package chapter9.Excercise;
 
 public class Cake {
 
-    private String flavor;
+    private String flavor;//
     private double price;
 
     public String getFlavor() {
